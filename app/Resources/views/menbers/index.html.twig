@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('menbers_new') }}" class="btn btn-default">Create a new menber</a>
+    <h1 class="page-header">Carnet d'adresse</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>Url</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for menber in menbers %}
+            <tr>
+                <td><a href="{{ path('menbers_show', { 'id': menber.id }) }}">{{ menber.id }}</a></td>
+                <td>{{ menber.nom }}</td>
+                <td>{{ menber.email }}</td>
+                <td>{{ menber.adresse }}</td>
+                <td>{{ menber.telephone }}</td>
+                <td>{{ menber.url }}</td>
+                <td>
+                            <a href="{{ path('menbers_show', { 'id': menber.id }) }}" class="btn btn-success">Details</a>
+                            <a href="{{ path('menbers_edit', { 'id': menber.id }) }}" class="btn btn-primary">Update</a>
+                    <a href="{{ path('menbers_delete', { 'id': menber.id }) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

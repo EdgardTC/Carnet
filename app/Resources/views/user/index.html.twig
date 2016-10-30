@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="page-header">Users list</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.username }}</td>
+                <td>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-success">Details</a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-primary">Update</a>
+                            <a href="{{path('user_delete',{'id':user.id}) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Add a new user</a>
+        </li>
+    </ul>
+{% endblock %}

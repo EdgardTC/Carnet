@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <h1 class="page-header">{{ menber.nom }}</h1>
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td> <a href="{{ path('menbers_edit', { 'id': menber.id }) }}" class="btn btn-success">Edit</a>
+            <a href="{{ path('menbers_index') }}" class="btn btn-default">Back</a>  </td>
+            <td>          {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger">
+                {{ form_end(delete_form) }}</td>
+        </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ menber.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ menber.nom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ menber.email }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ menber.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ menber.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ menber.url }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
